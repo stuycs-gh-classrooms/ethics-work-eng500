@@ -1,0 +1,6 @@
+def sleep_in(weekday, vacation):
+  if (weekday == False ):
+	return True
+  else:
+	return vacation
+ 
