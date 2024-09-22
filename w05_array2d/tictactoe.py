@@ -1,31 +1,123 @@
 win = False
-b = [[' ']*3]*3
+b = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
+sample = [['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']]
+p1 = "X"
+p2 = "O"
 
 
-def pretty(a):
-    for b in len(a):
-        print(a[b].toString)
+def arrprint(b):
+    result = ''
+    for i in range(len(b)):
+        result += '['
+        for n in range(len(b[i])):
+            result += str(b[i][n])
+            if n != 2:
+                result += ' | '
+        result += ']'
+        if i != 2:
+            result += '\n'
+    print(result + '\n')
 
 #the start() function has no parameters and will run at the
 #beginning of the game to initialize which symbol a player has
-def start():
-    choose = input("Player 1, do you want to be X or O? \n")
-    if (choose == 'X' or choose == 'x'):
-        p1 = 'X'
-        p2 = 'O'
-        print('Player 1 is X, Player 2 is O')
-    elif (choose == 'O' or choose == 'o'):
-        p1 = 'O'
-        p2 = 'X'
-        print('Player 1 is O, Player 2 is X')
-    else:
-        start()
-        
-def move(p1, p2):
-    pretty(b)
-    #if (win == False):
-        
+def run():
+    win = False
+    print("Player 1 is X and Player 2 is O")
+    print("This is a key for the different squares of the board:")
+    arrprint(sample)
+    while win == False:
+        move(p1)
+        win(p1)
+        move(p2)
+        win(p2)
     
-start()
-move('X', 'O')
+def move(p):
+    print('This is your current board: ')
+    arrprint(b)
+    if p == p1:
+        pos = input ("Player 1: Which square would you like to move? Please use lowercase letters \n")
+    else:
+        pos = input ("Player 2: Which square would you like to move? Please use lowercase letters \n")
+    if pos == 'a':
+        if b[0][0] == ' ':
+            b[0][0] = p
+        else:
+           print("This square is taken up. Choose a different one.")
+           move(p)
+    elif pos == 'b':
+        if b[0][1] == ' ':
+            b[0][1] = p
+        else:
+           print("This square is taken up. Choose a different one.")
+           move(p)
+    elif pos == 'c':
+        if b[0][2] == ' ':
+            b[0][2] = p
+        else:
+           print("This square is taken up. Choose a different one.")
+           move(p)
+    elif pos == 'd':
+        if b[1][0] == ' ':
+            b[1][0] = p
+        else:
+           print("This square is taken up. Choose a different one.")
+           move(p)
+    elif pos == 'e':
+        if b[1][1] == ' ':
+            b[1][1] = p
+        else:
+           print("This square is taken up. Choose a different one.")
+           move(p)
+    elif pos == 'f':
+        if b[1][2] == ' ':
+            b[1][2] = p
+        else:
+           print("This square is taken up. Choose a different one.")
+           move(p)
+    elif pos == 'g':
+        if b[2][0] == ' ':
+            b[2][0] = p
+        else:
+           print("This square is taken up. Choose a different one.")
+           move(p)
+    elif pos == 'h':
+        if b[2][1] == ' ':
+            b[2][1] = p
+        else:
+           print("This square is taken up. Choose a different one.")
+           move(p)
+    elif pos == 'i':
+        if b[2][2] == ' ':
+            b[2][2] = p
+        else:
+           print("This square is taken up. Choose a different one.")
+           move(p)
+def win(p):
+    if b[0][0] == p and b[0][1] == p and b[0][2] == p:
+        win = True
+        print(f"Yay {p} won!")
+    elif b[1][0] == p and b[1][1] == p and b[1][2] == p:
+        win = True
+        print(f"Yay {p} won!")
+    elif b[2][0] == p and b[2][1] == p and b[2][2] == p:
+        win = True
+        print(f"Yay {p} won!")
+    elif b[0][0] == p and b[1][0] == p and b[2][0] == p:
+        win = True
+        print(f"Yay {p} won!")
+    elif b[0][1] == p and b[1][1] == p and b[2][1] == p:
+        win = True
+        print(f"Yay {p} won!")
+    elif b[0][2] == p and b[1][2] == p and b[2][2] == p:
+        win = True
+        print(f"Yay {p} won!")
+    elif b[0][0] == p and b[1][1] == p and b[2][2] == p:
+        win = True
+        print(f"Yay {p} won!")
+    elif b[2][0] == p and b[1][1] == p and b[0][2] == p:
+        win = True
+        print(f"Yay {p} won!")
+            
+run()
+
     
